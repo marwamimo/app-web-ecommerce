@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2019-09-29 13:35:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dao.Articlecommande" table="ARTICLECOMMANDE" schema="MARWA" optimistic-lock="version">
+        <composite-id name="id" class="dao.ArticlecommandeId">
+            <key-property name="nocommande" type="long">
+                <column name="NOCOMMANDE" precision="10" scale="0" />
+            </key-property>
+            <key-property name="noarticle" type="long">
+                <column name="NOARTICLE" precision="10" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="commandeByNoarticle" class="dao.Commande" update="false" insert="false" fetch="select">
+            <column name="NOARTICLE" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="commandeByNocommande" class="dao.Commande" update="false" insert="false" fetch="select">
+            <column name="NOCOMMANDE" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="quantite" type="java.lang.Boolean">
+            <column name="QUANTITE" precision="1" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

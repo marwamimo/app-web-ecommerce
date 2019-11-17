@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2019-09-29 13:35:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dao.Commande" table="COMMANDE" schema="MARWA" optimistic-lock="version">
+        <id name="nocommande" type="long">
+            <column name="NOCOMMANDE" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="client" class="dao.Client" fetch="select">
+            <column name="NOCLIENT" precision="10" scale="0" />
+        </many-to-one>
+        <property name="datecommande" type="date">
+            <column name="DATECOMMANDE" length="7" />
+        </property>
+        <set name="articlecommandesForNoarticle" table="ARTICLECOMMANDE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NOARTICLE" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="dao.Articlecommande" />
+        </set>
+        <set name="articlecommandesForNocommande" table="ARTICLECOMMANDE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NOCOMMANDE" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="dao.Articlecommande" />
+        </set>
+    </class>
+</hibernate-mapping>

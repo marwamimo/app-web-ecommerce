@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2019-09-29 13:35:31 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dao.Article" table="ARTICLE" schema="MARWA" optimistic-lock="version">
+        <id name="noarticle" type="long">
+            <column name="NOARTICLE" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="marque" type="string">
+            <column name="MARQUE" length="10" not-null="true" />
+        </property>
+        <property name="categorie" type="string">
+            <column name="CATEGORIE" length="15" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="100" not-null="true" />
+        </property>
+        <property name="prixunitaire" type="big_decimal">
+            <column name="PRIXUNITAIRE" precision="6" not-null="true" />
+        </property>
+        <property name="quantiteenstock" type="short">
+            <column name="QUANTITEENSTOCK" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="ensolde" type="java.lang.Boolean">
+            <column name="ENSOLDE" precision="1" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
